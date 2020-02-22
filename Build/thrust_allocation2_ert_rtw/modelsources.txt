@@ -1,0 +1,2 @@
+  thrust_allocation2.cpp
+

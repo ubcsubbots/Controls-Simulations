@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript" src="./js/coder_app.js"></script>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<script type="text/javascript" src="./rtwreport_utils.js"></script>
+<script type="text/javascript" src="./rtwannotate.js"></script>
+<link rel="stylesheet" type="text/css" href="./css/coder_app.css"/>
+</head>
+<body onload="srcFileOnload();">
+<pre id="code">
+<table class="code" id="codeTbl">
+<tr name="1" id="1">
+<td><a id="l1" class='ln'>1</a></td><td><span class="ct">//</span></td></tr>
+<tr name="2" id="2">
+<td><a id="l2" class='ln'>2</a></td><td><span class="ct">// Academic License - for use in teaching, academic research, and meeting</span></td></tr>
+<tr name="3" id="3">
+<td><a id="l3" class='ln'>3</a></td><td><span class="ct">// course requirements at degree granting institutions only.  Not for</span></td></tr>
+<tr name="4" id="4">
+<td><a id="l4" class='ln'>4</a></td><td><span class="ct">// government, commercial, or other organizational use.</span></td></tr>
+<tr name="5" id="5">
+<td><a id="l5" class='ln'>5</a></td><td><span class="ct">//</span></td></tr>
+<tr name="6" id="6">
+<td><a id="l6" class='ln'>6</a></td><td><span class="ct">// File: xaxpy_7155JtSF.cpp</span></td></tr>
+<tr name="7" id="7">
+<td><a id="l7" class='ln'>7</a></td><td><span class="ct">//</span></td></tr>
+<tr name="8" id="8">
+<td><a id="l8" class='ln'>8</a></td><td><span class="ct">// Code generated for Simulink model 'thrust_allocation2'.</span></td></tr>
+<tr name="9" id="9">
+<td><a id="l9" class='ln'>9</a></td><td><span class="ct">//</span></td></tr>
+<tr name="10" id="10">
+<td><a id="l10" class='ln'>10</a></td><td><span class="ct">// Model version                  : 1.3</span></td></tr>
+<tr name="11" id="11">
+<td><a id="l11" class='ln'>11</a></td><td><span class="ct">// Simulink Coder version         : 9.2 (R2019b) 18-Jul-2019</span></td></tr>
+<tr name="12" id="12">
+<td><a id="l12" class='ln'>12</a></td><td><span class="ct">// C/C++ source code generated on : Fri Feb 21 14:46:41 2020</span></td></tr>
+<tr name="13" id="13">
+<td><a id="l13" class='ln'>13</a></td><td><span class="ct">//</span></td></tr>
+<tr name="14" id="14">
+<td><a id="l14" class='ln'>14</a></td><td><span class="pp">#include "rtwtypes.h"</span></td></tr>
+<tr name="15" id="15">
+<td><a id="l15" class='ln'>15</a></td><td><span class="pp">#include "xaxpy_7155JtSF.h"</span></td></tr>
+<tr name="16" id="16">
+<td><a id="l16" class='ln'>16</a></td><td></td></tr>
+<tr name="17" id="17">
+<td><a id="l17" class='ln'>17</a></td><td><span class="ct">// Function for MATLAB Function: '<a class="ct blk" blk_line="17">&lt;Root&gt;/thrust-allocator</a>'</span></td></tr>
+<tr name="18" id="18">
+<td><a id="l18" class='ln'>18</a></td><td><span class="kw">void</span> <a id="18c6" class="tk">xaxpy_7155JtSF</a>(<a id="18c21" class="tk">int32_T</a> <a id="18c29" class="tk">n</a>, <a id="18c32" class="tk">real_T</a> <a id="18c39" class="tk">a</a>, <span class="kw">const</span> <a id="18c48" class="tk">real_T</a> <a id="18c55" class="tk">x</a>[100], <a id="18c63" class="tk">int32_T</a> <a id="18c71" class="tk">ix0</a>,</td></tr>
+<tr name="19" id="19">
+<td><a id="l19" class='ln'>19</a></td><td>                    <a id="19c21" class="tk">real_T</a> <a id="19c28" class="tk">y</a>[10], <a id="19c35" class="tk">int32_T</a> <a id="19c43" class="tk">iy0</a>)</td></tr>
+<tr name="20" id="20">
+<td><a id="l20" class='ln'>20</a></td><td><span class="br">{</span></td></tr>
+<tr name="21" id="21">
+<td><a id="l21" class='ln'>21</a></td><td>  <a id="21c3" class="tk">int32_T</a> <a id="21c11" class="tk">ix</a>;</td></tr>
+<tr name="22" id="22">
+<td><a id="l22" class='ln'>22</a></td><td>  <a id="22c3" class="tk">int32_T</a> <a id="22c11" class="tk">iy</a>;</td></tr>
+<tr name="23" id="23">
+<td><a id="l23" class='ln'>23</a></td><td>  <a id="23c3" class="tk">int32_T</a> <a id="23c11" class="tk">k</a>;</td></tr>
+<tr name="24" id="24">
+<td><a id="l24" class='ln'>24</a></td><td>  <span class="kw">if</span> ((<a id="24c8" class="tk">n</a> <a id="24c10" class="tk">&gt;=</a> 1) <a id="24c16" class="tk">&amp;&amp;</a> (<a id="24c20" class="tk">!</a>(<a id="24c22" class="tk">a</a> <a id="24c24" class="tk">==</a> 0.0))) <span class="br">{</span></td></tr>
+<tr name="25" id="25">
+<td><a id="l25" class='ln'>25</a></td><td>    <a id="25c5" class="tk">ix</a> = <a id="25c10" class="tk">ix0</a> <a id="25c14" class="tk">-</a> 1;</td></tr>
+<tr name="26" id="26">
+<td><a id="l26" class='ln'>26</a></td><td>    <a id="26c5" class="tk">iy</a> = <a id="26c10" class="tk">iy0</a> <a id="26c14" class="tk">-</a> 1;</td></tr>
+<tr name="27" id="27">
+<td><a id="l27" class='ln'>27</a></td><td>    <span class="kw">for</span> (<a id="27c10" class="tk">k</a> = 0; <a id="27c17" class="tk">k</a> <a id="27c19" class="tk">&lt;</a> <a id="27c21" class="tk">n</a>; <a id="27c24" class="tk">k</a><a id="27c25" class="tk">++</a>) <span class="br">{</span></td></tr>
+<tr name="28" id="28">
+<td><a id="l28" class='ln'>28</a></td><td>      <a id="28c7" class="tk">y</a>[<a id="28c9" class="tk">iy</a>] <a id="28c13" class="tk">+=</a> <a id="28c16" class="tk">a</a> <a id="28c18" class="tk">*</a> <a id="28c20" class="tk">x</a>[<a id="28c22" class="tk">ix</a>];</td></tr>
+<tr name="29" id="29">
+<td><a id="l29" class='ln'>29</a></td><td>      <a id="29c7" class="tk">ix</a><a id="29c9" class="tk">++</a>;</td></tr>
+<tr name="30" id="30">
+<td><a id="l30" class='ln'>30</a></td><td>      <a id="30c7" class="tk">iy</a><a id="30c9" class="tk">++</a>;</td></tr>
+<tr name="31" id="31">
+<td><a id="l31" class='ln'>31</a></td><td>    <span class="br">}</span></td></tr>
+<tr name="32" id="32">
+<td><a id="l32" class='ln'>32</a></td><td>  <span class="br">}</span></td></tr>
+<tr name="33" id="33">
+<td><a id="l33" class='ln'>33</a></td><td><span class="br">}</span></td></tr>
+<tr name="34" id="34">
+<td><a id="l34" class='ln'>34</a></td><td></td></tr>
+<tr name="35" id="35">
+<td><a id="l35" class='ln'>35</a></td><td><span class="ct">//</span></td></tr>
+<tr name="36" id="36">
+<td><a id="l36" class='ln'>36</a></td><td><span class="ct">// File trailer for generated code.</span></td></tr>
+<tr name="37" id="37">
+<td><a id="l37" class='ln'>37</a></td><td><span class="ct">//</span></td></tr>
+<tr name="38" id="38">
+<td><a id="l38" class='ln'>38</a></td><td><span class="ct">// [EOF]</span></td></tr>
+<tr name="39" id="39">
+<td><a id="l39" class='ln'>39</a></td><td><span class="ct">//</span></td></tr>
+<tr name="40" id="40">
+<td><a id="l40" class='ln'>40</a></td><td></td></tr>
+</table>
+</pre>
+</body>
+</html>
