@@ -1,5 +1,4 @@
 % This script is run when this MATLAB project starts up
-%#codegen
 
 % BLOCK PARAMETERS
 v = 2; % Desired averaged speed used by the trajectory planner (m/s)
@@ -68,10 +67,10 @@ params.L2x = 11.238*cosd(54.261); % x and y length of thruster 1
 params.L2y = 11.238*sind(54.261); % (front left) from the COM (in)
 
 params.L3x = 11.466*cosd(48.73); % x and y length of thruster 1 
-params.L3x = 11.466*sind(48.73); % (back right) from the COM (in)
+params.L3y = 11.466*sind(48.73); % (back right) from the COM (in)
 
 params.L4x = 11.85*cosd(50.34); % x and y length of thruster 1 
-params.L4x = 11.85*sind(50.34); % (back left) from the COM (in)
+params.L4y = 11.85*sind(50.34); % (back left) from the COM (in)
 
 params.L5x = 8.744; % x length of thruster 5 (top right) from the COM (in)
 
