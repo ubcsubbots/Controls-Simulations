@@ -11,11 +11,11 @@ In this folder are the parameter scripts for the control system corresponding to
 
 ### Systems
 This folder contains the systems that can be run/exported, it contains 3 main systems.
-##### control_system.slx
+#### control_system.slx
 This is the control system that is exported to C++ code that can be used by our ROS system. You can use the embedded coder Simulink app to export the code, which will package the exported system into a zip file found in the `Build` folder. (Note: make sure that all the PID blocks are set to discrete, this has to be done for the exporting process to work, but after doing this, you need to set the blocks back to continuous for the simulations to work)
 
-##### ideal_simulation.slx
+#### ideal_simulation.slx
 This is the ideal simulator which tests our control system under the assumption that we can produce the exact desired thrust/torque given by the controller. The control system is evaluated on `auv_model.slx`, which is our mathematical model of our AUV.
 
-##### real_simulation.slx
+#### real_simulation.slx
 This is the real life simulator which attempts to best model the control system according to the mechanical/electrical constraints of our AUV, and also errors in our modelling. It also tests the outputs of `thrust_allocation.slx` which is the block that converts thrust to PWM signals, and is used in our actual control system. The control system is again evaluated on `auv_model.slx`, however this time we add error to the model's outputs to simulate inaccuracies.
