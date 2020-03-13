@@ -1,23 +1,9 @@
 % This script is run when this MATLAB project starts up
 
 % BLOCK PARAMETERS
-v = 0.1; % Desired averaged speed used by the trajectory planner (m/s)
-
-% Proportional gain matrix
-Kp_mat = [ 7, 0, 0, 0, 0, 0; ... % x pos err gain
-           0, 10, 0, 0, 0, 0; ... % y pos err gain
-           0, 0, 7, 0, 0, 0; ... % z pos err gain
-           0, 0, 0, 7, 0, 0; ... % phi rot err gain
-           0, 0, 0, 0, 7, 0; ... % theta rot err gain
-           0, 0, 0, 0, 0, 5 ];   % psi rot err gain
-       
-% Derivative gain matrix      
-Kd_mat = [ 7, 0, 0, 0, 0, 0; ... % x lin vel err gain
-           0, 10, 0, 0, 0, 0; ... % y lin vel err gain
-           0, 0, 10, 0, 0, 0; ... % z lin vel err gain
-           0, 0, 0, 3, 0, 0; ... % phi ang vel err gain
-           0, 0, 0, 0, 3, 0; ... % theta ang ve err gain
-           0, 0, 0, 0, 0, 3 ];   % psi ang ves err gain
+v = 0.2; % Desired averaged speed used by the trajectory planner (m/s)
+thrust_upper_limit = 10;  % The upper bound on desired thrust/torque produced by controller (N)
+thrust_lower_limit = -10; % The lower bound on desired thrust/torque produced by controller (N) 
 
 % CONSTANTS
 const.rho_water = 998.0;  % water density          (Kg/m^2)
@@ -28,7 +14,7 @@ const.g = 9.81;           % gravitational constant (m/s^2)
 % Parameters are stored in a single struct so it is easy to pass them into
 % a Simulink MATLAB function block
 
-params.m = 14.405;                            % mass of auv        (Kg)
+params.m = 18.7; %14.405;                            % mass of auv        (Kg)
 params.V = 0.0188;                            % volume of auv      (m^3)
 params.W = params.m*const.g;                  % auv weight         (Kg)
 params.B = const.rho_water*const.g*params.V;  % auv buoyancy force (N)
