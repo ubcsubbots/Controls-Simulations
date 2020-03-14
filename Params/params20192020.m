@@ -1,9 +1,11 @@
 % This script is run when this MATLAB project starts up
 
 % BLOCK PARAMETERS
-v = 0.2; % Desired averaged speed used by the trajectory planner (m/s)
+v = 0.1; % Desired averaged speed used by the trajectory planner (m/s)
 thrust_upper_limit = 10;  % The upper bound on desired thrust/torque produced by controller (N)
 thrust_lower_limit = -10; % The lower bound on desired thrust/torque produced by controller (N) 
+eta_0 = [0;0;1;0;0;0];  % Initial eta of simulation
+eta_ref = [5;0;3;0;0;0]; % Reference eta of simulation
 
 % CONSTANTS
 const.rho_water = 998.0;  % water density          (Kg/m^2)
