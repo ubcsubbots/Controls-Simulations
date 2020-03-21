@@ -1,11 +1,17 @@
 % This script is run when this MATLAB project starts up
 
+% Add Library to the path
+path = mfilename('fullpath');
+[currdir,~,~] = fileparts(path);
+[rootdir,~,~] = fileparts(currdir);
+addpath(fullfile(rootdir,'Library'));
+
 % BLOCK PARAMETERS
-v = 0.1; % Desired averaged speed used by the trajectory planner (m/s)
-thrust_upper_limit = 10;  % The upper bound on desired thrust/torque produced by controller (N)
-thrust_lower_limit = -10; % The lower bound on desired thrust/torque produced by controller (N) 
-eta_0 = [0;0;1;0;0;0];  % Initial eta of simulation
-eta_ref = [5;0;3;0;0;0]; % Reference eta of simulation
+v = 0.2;                      % Desired averaged speed used by the trajectory planner (m/s)
+thrust_upper_limit = 10;      % The upper bound on desired thrust/torque produced by controller (N)
+thrust_lower_limit = -10;     % The lower bound on desired thrust/torque produced by controller (N) 
+eta_0 = [0;0;0;0;0;0];        % Startpoint pose of the trajectory
+eta_ref = [6;2;1;0;0;3.14/2]; % Endpoint pose of the trajectory
 
 % CONSTANTS
 const.rho_water = 998.0;  % water density          (Kg/m^2)
@@ -16,7 +22,7 @@ const.g = 9.81;           % gravitational constant (m/s^2)
 % Parameters are stored in a single struct so it is easy to pass them into
 % a Simulink MATLAB function block
 
-params.m = 18.7; %14.405;                            % mass of auv        (Kg)
+params.m = 18.7; %14.405;                     % mass of auv        (Kg)
 params.V = 0.0188;                            % volume of auv      (m^3)
 params.W = params.m*const.g;                  % auv weight         (Kg)
 params.B = const.rho_water*const.g*params.V;  % auv buoyancy force (N)
@@ -38,9 +44,9 @@ params.Kp = 0;         % roll linear drag parameter (Ns/m)
 params.Kq = 0;         % pitch linear drag parameter (Ns/m)
 params.Nr = 0;         % yaw linear drag parameter (Ns/m)
 
-params.Xuu = 85.625;        % x quadratic drag parameter (Ns^2/m^2)
+params.Xuu = 85.625;   % x quadratic drag parameter (Ns^2/m^2)
 params.Yvv = 0;        % y quadratic drag parameter (Ns^2/m^2)
-params.Zww = 215;        % z quadratic drag parameter (Ns^2/m^2)
+params.Zww = 215;      % z quadratic drag parameter (Ns^2/m^2)
 params.Kpp = 0;        % roll quadratic drag parameter (Ns^2/m^2)
 params.Kqq = 0;        % pitch quadratic drag parameter (Ns^2/m^2)
 params.Nrr = 0;        % yaw quadratic drag parameter  (Ns^2/m^2)
